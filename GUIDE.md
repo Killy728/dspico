@@ -3,7 +3,7 @@ This guide aims to document step by step how to setup your DSpico.
 
 ## Prerequisites
 1. Ensure you have a Linux or WSL (Windows Subsystem for Linux) environment set up.
-2. Install [BlocksDS](https://blocksds.skylyrac.net/docs/setup/options/)
+2. Install [BlocksDS](https://blocksds.skylyrac.net/docs/setup/)
 3. Install [.NET 9.0](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-install?tabs=dotnet9&pivots=os-linux-ubuntu-2404) for your environment (note: this link points to the instructions for Ubuntu, but links for most OS'es are available on the same page)
 4. Install a few prerequesite packages: `sudo apt install cmake gcc-arm-none-eabi build-essential git`
 5. Set an environment variable for dlditool: `export DLDITOOL=/opt/wonderful/thirdparty/blocksds/core/tools/dlditool/dlditool`
