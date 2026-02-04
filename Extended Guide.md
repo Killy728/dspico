@@ -114,11 +114,12 @@ Anyway, on to the guide!
 	- [10.1 - Slot your SD Card into the DSPico](#101---slot-your-sd-card-into-the-dspico)
 	- [10.2 - Profit](#102---profit)
 
-
+---
 ## 0. Prerequisites
 
 ### 0.1 - Ensure you have a Linux or WSL (Windows Subsystem for Linux) Environment set up
 
+##
 #### 0.1.1 - Download WSL
 
 Windows Subsystem for Linux (WSL), rather, the Linux File System and Terminal will be the backbone of this entire project. You will become very familiar with how to dart around those files via the terminal and bend the universe to your will!!! (maybe not so much the last part).
@@ -133,7 +134,7 @@ Right-click the Start Menu and open `Terminal (Admin)`. If a scary pop-up asks i
 
 Then run the command:
 
-```bash
+```
 wsl --install
 ```
 
@@ -141,6 +142,7 @@ After it is finished, it will ask you to reboot your PC. After rebooting, open t
 
 > If it doesn't ask you to reset and instead begins downloading Ubuntu, then you already have WSL on your computer. Look at you, you overachiever you.
 
+##
 #### 0.1.2 - Setting Up WSL
 
 Let's start with the initial setup and creating your profile.
@@ -159,13 +161,13 @@ When you try to type in a password, nothing comes up on the screen. This is an i
 >
 > In PowerShell, run the command:
 >
-> ```bash
+> ```
 > wsl -d Ubuntu --user root
 > ```
 >
 > Then:
 >
-> ```bash
+> ```
 > passwd <your_username>
 > ```
 >
@@ -173,7 +175,7 @@ When you try to type in a password, nothing comes up on the screen. This is an i
 >
 > If you forgot your username, either look in the /home/ Ubuntu folder, or run the command:
 >
-> ```bash
+> ```
 > ls /home
 > ```
 
@@ -183,6 +185,7 @@ If your password was updated successfully, you should see some green and blue te
 
 And just like a normal terminal, if you are at all familiar with it, that is where you paste... I MEAN type out and run commands. Yeah, type out and run. 
 
+##
 #### 0.1.3 - Getting Used to the WSL File System
 
 I wanted to add this section to get you familiar with where exactly everything will be taking place. That is to say, the files where the action happens. 
@@ -191,8 +194,8 @@ Open up File Explorer, the folder icon, and on the left-hand side, scroll down t
 
 Open the Ubuntu file you will be met with a whole load of files. Now, there are 2 files that are important to remember. 
 
-`/opt/`
-`/home/`
+- `/opt/`
+- `/home/`
 
 /opt/ will house the Wonderful file, which will have toolchains and other bits needed for DSpico. It is currently empty, and you will not have to go into this file after you populate it.
 
@@ -200,79 +203,100 @@ Open the Ubuntu file you will be met with a whole load of files. Now, there are 
 
 I like to keep File Explorer open on my screen to see what is going on in the file system as I download and run various commands. It's also helpful when setting current directories, as you need to reference specific file names that you download.
 
+##
 ### 0.2 - Install BlocksDS and the Wonderful Toolchain
 
+##
 #### 0.2.1 - Install Wonderful Toolchain
 
 Follow the link [Wonderful Toolchain Getting Started - Linux](https://wonderful.asie.pl/wiki/doku.php?id=getting_started:linux).
 
-#### 0.2.2 - Download Bootstrap (x86_64)  
+##
+#### 0.2.2 - Download Bootstrap (x86_64)
 
 Under Downloads, install the file that fits your CPU architecture. Your options are either x86 or ARM. On Windows, it is mostly likely to be the former: Bootstrap (x86_64). 
 
 > If you are unsure, in your terminal, run the command:
 >
-> `uname -m`
+> ```
+> uname -m
+> ```
 >
 > This will tell you what CPU architecture you are on.
 
+##
 #### 0.2.3 - Create the Wonderful File within /opt/
 
 Now, follow the directions under the "Installation Instructions" in the order they appear. There is more information on what the commands do and why certain notation is used. Though not critical to the project, it is worth reading.
 
-I'll list the commands below as they appear in the Installation Instructions. They are the same, so whatever guide you want to follow is fine with me.
+I'll list the commands below as they appear in the Installation Instructions. They are the same, so whatever guide you choose is fine with me.
 
 Start by running: 
 
-`sudo mkdir /opt/wonderful`
+```
+sudo mkdir /opt/wonderful
+```
 
-This is one of those moments where you need your password. The "sudo" prefix is telling the terminal to run that command as an administrator, so the password is to prove you are you. No fake IDs at this bar. 
+This is one of those moments where you need your password. The `sudo` prefix tells the terminal to run the command as an administrator, so the password proves you are you. No fake IDs at this bar. 
 
-Once you put in your password, nothing will happen. Well... yes and no. This is also a Linux feature where it functions on the philosophy of "No news is good news". What the command did was create a file called "wonderful" within the /opt/ file. If you navigate to the /opt/ file, you'll see "wonderful" in there. 
+Once you put in your password, nothing will happen. Well... yes and no. This is also a Linux feature where it functions on the philosophy of "No news is good news". What the command did was create a file called `wonderful` within the `/opt/` file. If you navigate to the `/opt/` file, you'll see `wonderful` in there. 
 
+##
 #### 0.2.4 - Give permissions to Wonderful to your Current User
 
 Next, run:
 
-`sudo chown -R "$USER" /opt/wonderful`
+```
+sudo chown -R "$USER" /opt/wonderful
+```
 
 Again, nothing will happen, but that is good. 
 
+##
 #### 0.2.5 - Extract Bootstrap
 
-The next command is a bit more complicated, as it is a command to extract the contents of the bootstrap file you downloaded into the wonderful folder. 
+The next command is a bit more complicated, as it extracts the contents of the bootstrap file you downloaded into the wonderful folder. 
 
-Now, there is probably a million ways to do this, but I found the way that works for me is to take the file you downloaded, "wf-bootstrap-x86_64.tar.gz" from you Downloads folder, and drop it into the /opt/wonderful/ folder in Linux.
+Now, there is probably a million ways to do this, but I found the way that works for me is to take the file you downloaded, `wf-bootstrap-x86_64.tar.gz` from your `Downloads` folder, and drop it into the `/opt/wonderful/` folder in Linux.
 
-Once in your wonderful folder, run this command to extract it:
+Once in your `wonderful folder`, run this command to extract it:
 
-`cd /opt/wonderful/ && tar xzvf /opt/wonderful/wf-bootstrap-x86_64.tar.gz`
+```
+cd /opt/wonderful/ && tar xzvf /opt/wonderful/wf-bootstrap-x86_64.tar.gz
+```
 
 The terminal should be loaded with a whole lot of different files. If you look in the wonderful folder (refresh if you were already there), you should see it now populated with a whole bunch of different folders and files. 
 
 Now, if you're sharp-eyed, why the heck did I have to add ".gz" to the end of the Bootstrap file when writing the command? That is the file extension which, by default, is hidden on Windows. Now is the time to enable, as it will be important later. 
 
+##
 #### 0.2.6 - Enable File Name Extensions in File Explorer if you Haven't Already
 
-This will be a little hard to explain without pictures, so if you need some, [check this link out](https://fileinfo.com/help/windows_11_show_file_extensions). In  File Explorer, at the top, click "View", highlight "Show", then click "File name  extensions".
+This will be a little hard to explain without pictures, so if you need some, [check this link out](https://fileinfo.com/help/windows_11_show_file_extensions). In File Explorer, at the top, click `View", highlight "Show`, then click `File name extensions`.
 
-Now, if you look back at that wf-bootstrap-x86_64.tar file in the /opt/wonderful/ folder, it now has the extension ".gz" tagged on the end.  
+Now, if you look back at that `wf-bootstrap-x86_64.tar` file in the /opt/wonderful/ folder, it now has the extension `.gz` tagged on the end.  
 
+##
 #### 0.2.7 - Synchronize and update the Toolchain's Package Manager
 
 Ok, back on track, run the command:
 
-`/opt/wonderful/bin/wf-pacman -Syu wf-tools`
+```
+/opt/wonderful/bin/wf-pacman -Syu wf-tools
+```
 
-When asked to proceed, type Y and press Enter. "Y" is, of course, for yes, and though this isn't case sensitive as Y or y works, get used to the idea that EVERYTHING is case sensitive. It will save you a lot of trouble that way.
+When asked to proceed, type Y and press Enter. `Y` is, of course, for yes, and though this isn't case sensitive as Y or y works, get used to the idea that EVERYTHING is case sensitive. It will save you a lot of trouble that way.
 
 >If it fails to grab some tools, run the command again.
 
+##
 #### 0.2.8 - Configure the Toolchain's Environmental Variables
 
 Once it is done, run:
 
-`source /opt/wonderful/bin/wf-env`
+```
+source /opt/wonderful/bin/wf-env
+```
 
 Yes, it does nothing, which is good. I will say that every time since, well, confirmation that a thing does a thing makes sense to my brain. 
 
@@ -280,13 +304,14 @@ Sweet, now you are done!!
 
 You do not need to go through the post-installation guide, as that is for development on the Bandai Wonderswan console. 
 
+##
 #### 0.2.9 - Add the BlocksDS repository to wf-pacman
 
 Step two for installing BlocksDS is as easy as it is just running a series of copy and paste commands. 
  
 Run:
  
-```bash
+```
 export PATH=/opt/wonderful/bin:$PATH
 
 wf-pacman -Syu wf-tools
@@ -295,11 +320,14 @@ wf-pacman -Syu
 ```
 Proceed with Install
 
+##
 #### 0.2.10 - Install the ARM Toolchain and BlocksDS 
 
 Run:
 
-`wf-pacman -S blocksds-toolchain`
+```
+wf-pacman -S blocksds-toolchain
+```
 
 Proceed with the installation
 
@@ -311,50 +339,61 @@ Proceed with the installation
 >
 > All we need to do is "uncomment" out 1 character from a line of code, and it will tell the command to retry until it succeeds. I speak more about uncommenting in the section [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt](#543---uncomment-the-dspico_enable_wrfuxxed-option-in-cmakeliststxt), but all you need to know right now is going into a text file and removing a "#".
 >
-> In file explorer, go to /opt/eonderful/etc/. There should be a file called `packman.conf`. Open that file with a notepad app. If you don't get the option to open the file when you click on it, just open Notepad first, and drag the file into it. 
+> In file explorer, go to `/opt/eonderful/etc/`. There should be a file called `packman.conf`. Open that file with a notepad app. If you don't get the option to open the file when you click on it, just open Notepad first, and drag the file into it. 
 >
-> On line 20, there is a line of code that says `#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u`. Remove the # at the very beginning, save the file, and close out. 
+> On line 20, there is a line of code that says `#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u`. Remove the `#` at the very beginning, save the file, and close out. 
 >
-> Rerun the command again, and, though it has to retry a few times, it'll get the files in the end. 
+> Rerun the command, and, though it has to retry a few times, it'll get the files in the end. 
 >
-> If you want to double check that it worked, run `wf-pacman -Ss toolchain`, and it will show the toolchains currently installed. 
+> If you want to double-check that it worked, run
+> ```
+> wf-pacman -Ss toolchain
+> ```
+> It will show the toolchains currently installed. 
 
-
-
+##
 #### 0.2.11 - Setup environment variables
 
 Run:
 
-`sudo ln -s /opt/wonderful/thirdparty/blocksds /opt/blocksds`
+```
+sudo ln -s /opt/wonderful/thirdparty/blocksds /opt/blocksds
+```
 
 It will do nothing, which is ok. 
 
 Run:
 
-`source /opt/wonderful/bin/wf-env`
+```
+source /opt/wonderful/bin/wf-env
+```
 
 This will also do nothing, and that is ok.
 
+##
 ### 0.3 - Install .NET 9.0
 
 This one is nice and easy, and isn't the bane of my existence for hours! (This part really threw me for a loop.)
 
-
+##
 #### 0.3.1 - Add Backports Repository
 
 Run:
 
-`sudo add-apt-repository ppa:dotnet/backports`
+```
+sudo add-apt-repository ppa:dotnet/backports
+```
 
-Press Enter to continue, and wait for it to finish. 
+Press `Enter` to continue, and wait for it to finish. 
 
 This adds the repository
 
+##
 #### 0.3.2 - Install SDK
 
 Then install the SDK via:
 
-```bash
+```
 sudo apt-get update && \
 sudo apt-get install -y dotnet-sdk-9.0 
 ```
@@ -366,21 +405,22 @@ This takes a little bit of time.
 
 Once that is finished, you are all done with that step.
 
+##
 ### 0.4 - Prerequisite Packages
 
 Run:
 
-```bash
+```
 sudo apt install cmake gcc-arm-none-eabi build-essential git
 ```
 
->If this command fails to retrieve some archives, chances are you are in the same group from [0.2.11 - Setup environment variables](#0211---setup-environment-variables) and [0.3.2 - Install SDK](#032---install-sdk) who also had trouble. Misery loves company, and my Laptop would like a friend. 
+>If this command fails to retrieve some archives, chances are you are in the same group as [0.2.11 - Setup environment variables](#0211---setup-environment-variables) and [0.3.2 - Install SDK](#032---install-sdk) who also had trouble. Misery loves company, and my Laptop would like a friend. 
 >
 > For some reason, the arm-gnu-toolchain decided to cross its little arms and say "NO!" when asked to be downloaded. In keeping with my metaphor, we need to go to their parents to get it.  
 >
 > First, we need all of the parts of the command that (usually) don't throw a fit. This is cmake, build-essential, and git.
 >
-> ```bash
+> ```
 > sudo apt install cmake
 > sudo apt install build-essential
 > sudo apt install git
@@ -391,38 +431,53 @@ sudo apt install cmake gcc-arm-none-eabi build-essential git
 >
 > Then, the problem child who, no matter how much you retry, will not download.
 >
-> Set the current directory to /opt/. I will explain the current directory later. Problem first, word dump later. 
+> Set the current directory to `/opt/`. I will explain the current directory later. Problem first, word dump later. 
 >
-> `cd /opt`
+> ```
+>cd /opt
+> ```
 >
 > Pull the toolchain directly from the dev website:
 >
-> `sudo wget https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz`
+> ```
+>sudo wget https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz
+> ```
 > 
 > This takes a minute and may retry a few times.
 >
 > Unpack it:
 >
->`sudo tar -xf arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz -C /opt`
+>```
+>sudo tar -xf arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz -C /opt
+>```
 >
 > Add it to PATH:
 >
-> `echo 'export PATH=/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin:$PATH' >> ~/.bashrc`
+> ```
+>echo 'export PATH=/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin:$PATH' >> ~/.bashrc
+> ```
 >
 > Reload the .bashrc (which contains PATH changes). This is so you don't have to close and reopen the terminal:
 >
-> `source ~/.bashrc`
+> ```
+>source ~/.bashrc
+> ```
 >
 > And verify:
 >
-> `arm-none-eabi-gcc --version`
+> ```
+>arm-none-eabi-gcc --version
+> ```
 >
-> If the verify prints out a bunch of information like a version number, then all is good. Since you installed all of the components manually, you do not need to rerun the failed command, so you can move on to the next step.
+> If the verify prints out a bunch of information like a version number, then all is good. Since you installed all of the components manually, you do not need to rerun the original command, so you can move on to the next step.
 
+##
 ### 0.5 - Set an environment variable for dlditool
 
 Run:
-`DLDITOOL=/opt/wonderful/thirdparty/blocksds/core/tools/dlditool/dlditool`
+```
+DLDITOOL=/opt/wonderful/thirdparty/blocksds/core/tools/dlditool/dlditool
+```
 
 Nothing will happen, which is a good thing.
 
@@ -431,8 +486,6 @@ Nothing will happen, which is a good thing.
 ---
 
 ## 1. Getting and Assembling your DSpico
-
----
 
 I'll make the bold assumption that you already have an unflashed DSpico in your hands, or you need to reflash it for whatever reason. I mean, why else would you be doing this?
 
@@ -452,7 +505,7 @@ Just so we are all on the same page here, let's set the current directory to you
 
 Run:
 
-```bash
+```
 cd
 ```
 
@@ -460,59 +513,75 @@ This will set the directory to `/home/Username/` file. Any subsequent commands w
 
 > For me, I just had the `/home/Username/` folder be my project folder, but if you wanted to make a "project" file within your username file to keep everything orderly, first, run the command to make the file:
 >
+> ```
 > sudo mkdir ~/project
+> ```
 >
 > You can, of course, name it whatever you like. Just remember it.
 >
-> `cd ~/project/` 
+> ```
+> cd ~/project/
+> ``` 
 > 
-> You will get used to typing this, I promise.
+> You will get used to typing (or copying and pasting) this, I promise.
 >
-> For the remainder of this project, I will be treating the /home/Username/ directory as my project file, so if you wanted to use a dedicated project file, you'll need to adjust the commands accordingly. 
+> For the remainder of this project, I will be treating the `/home/Username/` directory as my project file, so if you want to use a dedicated project file, you'll need to adjust the commands accordingly. 
 >
-> To give you an idea, in the next section, we will be downloading a file from Github called dspico-dldi. When I want to enter that folder and set it as my current directory, I will be running the command:
+> To give you an idea, in the next section, we will be downloading a file from GitHub called `dspico-dldi`. When I want to enter that folder and set it as my current directory, I will be running the command:
 > 
-> `cd ~/dspico-dldi/` 
+> ```
+> cd ~/dspico-dldi/
+> ``` 
 >
 > If you have a project file you'd rather use, add that file name before the file we want to enter. So, it'd look like:
 >
-> `cd ~/project/dspico-dldi/`
+> ```
+> cd ~/project/dspico-dldi/
+> ```
 
+##
 ### 2.2 - Clone the DSpico DLDI Repository
 
-Now the project really beings
+Now the project really begins!
 
-You will need to clone this repository. It seems complicated, but it's easy I promise.
+You will need to clone this repository. It seems complicated, but it's easy, I promise.
  
-Go to the [DSpico DLDI repository](https://github.com/LNH-team/dspico-dldi) Github page, and looking for the green button that says "`<> Code`". The first link you see, the HTTPS one, is the one you want. Copy that, go back to your terminal 
+Go to the [DSpico DLDI repository](https://github.com/LNH-team/dspico-dldi) Github page, and look for the green button that says `<> Code`. The first link you see, the HTTPS one, is the one you want. Copy that, go back to your terminal 
 
-Type "`git clone`", then paste the link. 
+Type `git clone`, then paste the link. 
 
 The command will look like this:
 
-`git clone https://github.com/LNH-team/dspico-dldi.git`
+```
+git clone https://github.com/LNH-team/dspico-dldi.git
+```
 
-What this will do is take the files from the GitHub, and drop them into whatever your current directory is. Since it is the username file (or project file if you wanted to do that), it will be in there now.
+What this will do is take the files from GitHub and drop them into whatever your current directory is. Since it is the `username` file (or project file if you wanted to do that), it will be in there now.
 
-> And before you ask, yes, you NEED to do this. Downloading the Zip of the repository will not work as it will not include the .git file. This is important. Don't know why, but it is.
+> And before you ask, yes, you NEED to do this. Downloading the Zip of the repository will not work, as it will not include the .git file. This is important. Don't know why, but it is.
 
-Now, we to go into that file you just cloned, set it as the current directory, and run a "make" command. 
+Now, we have to go into that file you just cloned, set it as the current directory, and run a `make` command. 
 
 Similar to the command to set the current directory to the username file, run:
 
-`cd ~/dspico-dldi/`
+```
+cd ~/dspico-dldi/
+```
 
-If you didn't notice it before when unpacking that Bootstrap.tar.gz file, when you run that current directory command (with the prefix `cd`), the current directory shows up as blue text next to where you input commands. Neat. 
+If you didn't notice it before when unpacking that `Bootstrap.tar.gz file`, when you run that current directory command (with the prefix `cd`), the current directory shows up as blue text next to where you input commands. Neat. 
 
 So if you did that correctly, you should see blue text that says `~/dspico-dldi$` next to your cursor.
 
+##
 ### 2.3 - Run Make to create the DLDI
 
 Once that is done, run the command for the build-automation tool, make:
 
-`make`
+```
+make
+```
 
-And wallah! DSpico.dldi is created. This will be put in the root of your dspico-dldi folder, so remember it as it will be important later. 
+And wallah! DSpico.dldi is created. This will be put in the root of your `dspico-dldi` folder, so remember it as it will be important later. 
 
 ---
 
@@ -520,79 +589,104 @@ And wallah! DSpico.dldi is created. This will be put in the root of your dspico-
 
 ### 3.1 - Clone the DSpico Bootloader repository
 
-"Cloning repositories" is something you'll see a several more times in this guide, so for simplicity, I'll layout the commands with less and less explanation as we go on. 
+"Cloning repositories" is something you'll see several more times in this guide, so for simplicity, I'll lay out the commands with less and less explanation as we go on. 
 
-Head to the [DSpico Bootloader Repository](https://github.com/LNH-team/dspico-bootloader) copy the link under the "`<> code`" dropdown, and head to your terminal.
+Head to the [DSpico Bootloader Repository](https://github.com/LNH-team/dspico-bootloader), copy the link under the "`<> code`" dropdown, and head to your terminal.
 
 Now, to set the current directory where this repository will be cloned to:
 
-`cd`
+```
+cd
+```
 
 Then, like before, type in "git clone" and plop in the link. It should look like this:
 
-`git clone https://github.com/LNH-team/dspico-bootloader.git`
+```
+git clone https://github.com/LNH-team/dspico-bootloader.git
+```
 
-I mean... at this point, you probably caught on that I will be preparing the git clone commands for you, so you really don't have to go to the repository. You can if you want, I mean, you're your own person, and no text on a screen is going to tell you what to do. You are a strong, independent, DSpico firmware compiler, and you don't need no sass.
+I mean... at this point, you probably caught on that I will be preparing the git clone commands for you, so you really don't have to go to the repository. You can if you want, I mean, you're your own person, and no text on a screen is going to tell you what to do. You are a strong, independent, DSpico firmware compiler, and you don't need my sass.
 
-
+##
 ### 3.2 - Initialize the Submodules
 
 Set the current directory to the dspico-bootloader file you just cloned.
 
-`cd ~/dspico-bootloader/` 
+```
+cd ~/dspico-bootloader/
+``` 
 
 Then run:
 
-`git submodule update --init`
+```
+git submodule update --init
+```
 
-
+##
 ### 3.3 - Make the Bootloader
 
 Run:
 
-`make`
+```
+make
+```
 
 If everything was done right, `BOOTLOADER.nds` should have popped into the file. 
 
+##
 ### 3.4 - Patch the BOOTLOADER.nds with DSpico.dldi
 
-Remember that DLDI we made back in [2.2 Run Make to create the DLDI], well, we need it. 
+Remember that DLDI we made back in [2.2 - Clone the DSpico DLDI Repository](#22---clone-the-dspico-dldi-repository), well, we need it. 
 
 Run:
 
-`$DLDITOOL ~/dspico-dldi/DSpico.dldi BOOTLOADER.nds`
+```
+$DLDITOOL ~/dspico-dldi/DSpico.dldi BOOTLOADER.nds
+```
 
+##
 ### 3.5 - Clone the DSRomEncryptor Repository
 
 Set your current directory to your project folder: 
 
-`cd`
+```
+cd
+```
 
 And, like before, head to the [DSRomEncryptor Repository](https://github.com/Gericom/DSRomEncryptor), grab the link, and paste it after `git clone` 
 
-`git clone https://github.com/Gericom/DSRomEncryptor.git`
+```
+git clone https://github.com/Gericom/DSRomEncryptor.git
+```
 
+##
 ### 3.6 - Compile DSRomEncryptor
 
 Set the current directory to the DSRomEncryptor file:
 
-`cd ~/DSRomEncryptor`
+```
+cd ~/DSRomEncryptor
+```
 
 And run:
 
-`dotnet build`
+```
+dotnet build
+```
 
-> If this throws an error, jump back to [0.3 - Install .NET 9.0] and try again. 
+> If this throws an error, jump back to [0.3 - Install .NET 9.0](#03---install-net-90) and try again. 
 
 Once the command is done, it does something different. Usually, our output files have been dropped into the directory we were in, but this one is different. It decided to bury it a few layers deep. 
 
-The output executable, DSRomEncryptor, is in /DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/ This will be important to know.
+The output executable, `DSRomEncryptor`, is in `/DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/`. This will be important to know.
 
+##
 ### 3.7 - NTR and/or TWL Blowfish Tables
+
 
 **WARNING!**
 
-This is a required step I cannot help with. The NTR and TWL blowfish tables are not something the DSpico team nor I can provide you. These are pieces that you need to obtain via a backup of a console's bios. I cannot tell you how to obtain them. That is about all that I can say. 
+This is a required step I cannot help with. The NTR and TWL blowfish tables are not something the DSpico team, nor I, can provide you. These are pieces that you need to obtain via a backup of a console's bios. I cannot tell you how to obtain them. That is about all that I can say. 
 
 <!-- REVIEW! Confirm that this is not too much information -->
 
@@ -600,13 +694,13 @@ What I can help with is what to do when you have them.
 
 There are additional steps to set the DSpico up for DSi mode after this, so if you only want to set it up in DS mode, you can skip any mentions of Wrfuxxed or DSi. 
 
-Dumps of the bios should have these files depending on the tools and console:
+Dumps of the bios should have these files, depending on the tools and console:
 
 DS: `biosnds7.rom` or `bios7.bin`
 
 DSi: `bios7i.bin`
 
-Other files like `bios9.bin`, `biosnds9.rom` and `firmware.bin` can be ignored. Other names may exist, but I will assume they follow a similar naming convention.
+Other files like `bios9.bin`, `biosnds9.rom`, and `firmware.bin` can be ignored. Other names may exist, but I will assume they follow a similar naming convention.
 
 If need be, the files will need to be renamed to:
 
@@ -614,165 +708,212 @@ DS: `biosnds7.rom`
 
 DSi: `biosdsi7.rom`
 
-You NEED to be able to change the file extension if your dump(s) are .bin files. If you don't see the file extentions as part of the names, go back to [0.2.6 - Enable File Name Extensions in File Explorer if you Haven't Already].
+You NEED to be able to change the file extension if your dump(s) are .bin files. If you don't see the file extensions as part of the names, go back to [0.2.6 - Enable File Name Extensions in File Explorer if you Haven't Already](#026---enable-file-name-extensions-in-file-explorer-if-you-havent-already).
 
-Drop the file(s) into the /DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/ folder where the executable is.
+Drop the file(s) into the `/DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/` folder where the executable is.
 
 <!-- REVIEW The README of DSRomEncryotor has SHA1 stings attached to the dumps. Do these strings need to match any user provided dumps? --->
 
+##
 ### 3.8 - Finalizing the BOOTLOADER
+
 
 Set your current directory to file with the DSRomEncryptor executable:
 
-`cd ~/DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/`
+```
+cd ~/DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/
+```
 
 Then, run:
 
-`./DSRomEncryptor ~/dspico-bootloader/BOOTLOADER.nds default.nds`
+```
+./DSRomEncryptor ~/dspico-bootloader/BOOTLOADER.nds default.nds
+```
 
-If everything was done correctly, fingers crossed, you should have no errors, and default.nds poops outs. This will happen without any fanfare, so like usual, if you see nothing happen, it worked. 
+If everything was done correctly, fingers crossed, you should have no errors and `default.nds` poops out. This will happen without any fanfare, so, like usual, if you see nothing happen, it worked. 
 
 ---
 
 ## 4. Optional: Compiling Wrfuxxed
 
-This is for the DSi mode folks. If this is not important to you, skip to [5. Compiling the DSpico Firmware]
+This is for the DSi mode folks. If this is not important to you, skip to [5. Compiling the DSpico Firmware](#5-compiling-the-dspico-firmware)
 
+##
 #### 4.1 - Clone the Wrfuxxed repository
+
 
 Pop back to your project file.
 
-`cd ~`
+```
+cd ~
+```
 
 And clone the [Wrfuxxed repository](https://github.com/LNH-team/dspico-wrfuxxed) just like we have before.
 
-`git clone https://github.com/LNH-team/dspico-wrfuxxed.git`
+```
+git clone https://github.com/LNH-team/dspico-wrfuxxed.git
+```
 
+##
 #### 4.2 - Run Make in the WRfuxxed file
 
 Set the newly downloaded file as the current directory
 
-`cd ~/dspico-wrfuxxed/`
+```
+cd ~/dspico-wrfuxxed/
+```
 
 And run:
 
-`make`
+```
+make
+```
 
-If done correctly, a "uartBufv060.bin" file should be sitting in the directory.
+If done correctly, a `uartBufv060.bin` file should be sitting in the directory.
 
+##
 ### 4.3 - DLDI Patch the Exploit
 
 We'll need to reference the DLDI file, again, that we made back in [2.3 - Run Make to create the DLDI]
 
-`$DLDITOOL ~/dspico-dldi/DSpico.dldi uartBufv060.bin`
+```
+$DLDITOOL ~/dspico-dldi/DSpico.dldi uartBufv060.bin
+```
 
 ---
 ## 5. Compiling the DSpico Firmware
 
 We are almost there, I promise. 
 
+##
 ### 5.1 - Clone the DSpico Firmware Repository
 
-At this point, you can probably clone repository in your sleep, but for the sake of completeness, I'll have the steps listed. 
+At this point, you can probably clone the repository in your sleep, but for the sake of completeness, I'll have the steps listed. 
 
 Set the current directory to your project folder:
 
-`cd ~`
+```
+cd ~
+```
 
 Clone the [DSpico Firmware Repository](https://github.com/LNH-team/dspico-firmware)
 
-`git clone https://github.com/LNH-team/dspico-firmware`
+```
+git clone https://github.com/LNH-team/dspico-firmware
+```
 
+##
 ### 5.2 - Initialize the Submodules for DSpico Firmware
 
 Set the current directory to dspico-firmware folder:
 
-`cd ~/dspico-firmware/`
+```
+cd ~/dspico-firmware/
+```
 
 Run the bash script:
 
-```bash
+```
 git submodule update --init
 cd pico-sdk
 git submodule update --init
 cd ..
 ```
+
 This one will take a minute.
 
+##
 ### 5.3 - Move the default.nds File
 
-The default.nds file you made back in [3.8 - Finalizing the BOOTLOADER] isn't very helpful where it is at right now. We need it in the firmware file. Specifically, we need default.nds in the /roms/ folder. 
+The default.nds file you made back in [3.8 - Finalizing the BOOTLOADER](#38---finalizing-the-bootloader) isn't very helpful where it is at right now. We need it in the firmware file. Specifically, we need `default.nds` in the `/roms/` folder. 
 
-You can either copy and paste the file over to /dspico-firmware/roms/ if you're still in file explorer, or do the fancy command:
+You can either copy and paste the file over to `/dspico-firmware/roms/` if you're still in file explorer, or do the fancy command:
 
-`mv ~/DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/default.nds ~/dspico-firmware/roms`
+```
+mv ~/DSRomEncryptor/DSRomEncryptor/bin/Debug/net9.0/default.nds ~/dspico-firmware/roms
+```
 
-This is a new one. `mv` is the move command, if you didn't already guess that. It is something I like to have so save me from jumping around in file explorer.
+This is a new one. `mv` is the move command, if you didn't already guess that. It is something I like to have to save me from jumping around in the file explorer.
 
+##
 ### 5.4 - Optional: Including Wrfuxxed
 
-This is for the DSi mode folks. If this doesn't matter to you, skip to [5.5 - Compile the Firmware].
+This is for the DSi mode folks. If this doesn't matter to you, skip to [5.5 - Compile the Firmware](#55---compile-the-firmware).
 
-**WARNING!**
+> **WARNING!**
+> 
+> This is not a required step to compile the firmware; however, it is a required step for DSi mode that I cannot help with. You need a specific WRFU Tester v0.60 rom dump of a WRFU, which is a factory wireless tester. This is not something the DSpico team nor myself can help you obtain. I am sorry, but you are on your own. 
 
-<u>This is not a required step to compile the firmware, however, it is a required step for DSi mode that I cannot help with</u>. You need a specific WRFU Tester v0.60 rom dump of a WRFU, which is a factory wireless tester. This is not something the DSpico team nor myself can help you obtain. I am sorry, but you are on your own. 
-
+##
 #### 5.4.1 - Verifying WRFU Tester v0.60 Rom Dump
 
 What I can help you with is verifying that the WRFU Tester v0.60 rom dump you have is the one we need. 
 
-For this project, we need a very specific version of the dump with an SHA-1 string of "2d65fb7a0c62a4f08954b98c95f42b804fccfd26". Your dump will not have this number printed nicely on the file, so we need to run a command to retrieve it. 
+For this project, we need a very specific version of the dump with an SHA-1 string of `2d65fb7a0c62a4f08954b98c95f42b804fccfd26`. Your dump will not have this number printed nicely on the file, so we need to run a command to retrieve it. 
 
-First, name the dump "dsimode.nds", and put it into the /dspico-firmware/roms/ file. That is where it needs to go if it is the right one.
+First, name the dump `dsimode.nds`, and put it into the `/dspico-firmware/roms/` file. That is where it needs to go if it is the right one.
 
 Then, to verify the SHA-1 string, run: 
 
-`sha1sum ~/dspico-firmware/roms/dsimode.nds` 
+```
+sha1sum ~/dspico-firmware/roms/dsimode.nds
+``` 
 
-The terminal should spit out a long string of numbers and letters. Now, I don't know about you, but going back and forth between the terminal and this guide making sure the numbers are the same is a pain in the rear. Luckily, with the terminal, anything is possible. 
+The terminal should spit out a long string of numbers and letters. Now, I don't know about you, but going back and forth between the terminal and this guide, making sure the numbers are the same, is a pain in the rear. Luckily, with the terminal, anything is possible. 
 
-Run this bash command to compare your terminal output to the desired SHA-1 string. Obviously, replacing "YOUR_TERMINAL_OUTPUT" with your terminal output from the previous command:
+Run this bash command to compare your terminal output to the desired SHA-1 string. Obviously, replacing `"YOUR_TERMINAL_OUTPUT"` with your terminal output from the previous command:
 
-```bash
+```
 if [ "YOUR_TERMIAL_OUTPUT" = "2d65fb7a0c62a4f08954b98c95f42b804fccfd26" ]; then
     echo "Match"
 else
     echo "Different"
 fi
 ```
-If you see "Match" printed under "fi", then you are golden. If not, you need to source another dump. Good luck.
+If you see `Match` printed under `fi`, then you are golden. If not, you need to source another dump. Good luck.
 
+##
 #### 5.4.2 - Move the uartBufv060.bin to the data folder
 
-This one is pretty self explanatory. The uartBufv060.bin file you made in [4.3 - DLDI patch the exploit] is needed in the /dspico-firmware/data/ file.
+This one is pretty self-explanatory. The `uartBufv060.bin` file you made in [4.3 - DLDI Patch the Exploit](#43---dldi-patch-the-exploit) is needed in the `/dspico-firmware/data/` file.
 
 You can copy and paste it, or run the move command:
 
-`mv ~/dspico-wrfuxxed/uartBufv060.bin ~/dspico-firmware/data`
+```
+mv ~/dspico-wrfuxxed/uartBufv060.bin ~/dspico-firmware/data
+```
 
+##
 #### 5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt
 
-This one is a bit of a different move we haven't done yet. By default, the project is going to compile the firmware for DS mode. If you're here, you don't want that. You need to go into the /dspico-firmware/CMakeLists.txt file to say "Hey, I actually want DSi mode!"
+This one is a bit of a different move we haven't done yet. By default, the project is going to compile the firmware for DS mode. If you're here, you don't want that. You need to go into the /dspico-firmware/CMakeLists.txt file to say, "Hey, I actually want DSi mode!"
 
-Open that CMakeLists.txt in either your standard Notepad app(which comes stock with Windows), or [Notepad++](https://notepad-plus-plus.org/) if you want to be really fancy. Either one works.
+Open that `CMakeLists.txt` in either your standard Notepad app(which comes stock with Windows), or [Notepad++](https://notepad-plus-plus.org/) if you want to be really fancy. Either one works.
 
 Twelve lines down, you should see an entry `#DSPICO_ENABLE_WRFUXXED # This macro enables the WRFUXXED exploit to work.` 
 
-Remove the first "#" symbol from the beginning of that string (leave the second one there), save, and close out of that file. That's it. 
+Remove the first `#` symbol from the beginning of that string (leave the second one there), save, and close out of that file. That's it. 
 
-> Commenting, in a nutshell, is the ability to add notes or exclude code from a code file so that it isn't run as code (I sure said code a lot). So when we removed the `#`, the CMakeList will run `DSPICO_ENABLE_WRFUXXED` when the cmake command is triggered. What it won't do is run the text after that, the `# This macro enables the WRFUXXED exploit to work.` as code since it is commented out. It would probably make cmake very confused if it tried to run that sentence as code. 
+> Commenting, in a nutshell, is the ability to add notes or exclude code from a code file so that it isn't run as code (I sure said code a lot). So when we removed the `#`, the CMakeList will run `DSPICO_ENABLE_WRFUXXED` when the `cmake` command is triggered. What it won't do is run the text after that, the `# This macro enables the WRFUXXED exploit to work.` as code, since it is commented out. It would probably make CMake very confused if it tried to run that sentence as code. 
 
+##
 ### 5.5 - Compile the Firmware
 
-All of that hard works comes to this very moment. It is time to *bangs drums* compile the firmware. 
+All of that hard work comes to this very moment. It is time to *bangs drums* compile the firmware. 
 
 Run: 
 
-`./compile.sh`
+```
+./compile.sh
+```
 
->If you get an error saying that there are missing permissions, run `chmod +x compile.sh` and retry.
+>If you get an error saying that there are missing permissions, run
+> ```
+>chmod +x compile.sh
+> ```
+> and retry.
 
-If everything works, and there are no errors, your `DSpico.uf2` firmware file should be sitting in /dspico-firmware/build/
+If everything worked and there are no errors, your `DSpico.uf2` firmware file should be sitting in `/dspico-firmware/build/`.
 
 Congratulations! The hard part is over.
 
@@ -783,32 +924,35 @@ We've had a lot of keyboard and screen time watching text zip by on a terminal, 
 
 Naked. Afraid. Waiting to be nestled within the bosom of your DS's game card slot?
 
-With the firmware compiled, it is time to flash it onto the Raspberry Pi rp2040 IC; the beating heart of the DSpico.
+With the firmware compiled, it is time to flash it onto the Raspberry Pi RP2040 IC, the beating heart of the DSpico.
 
+##
 ### 6.1 - Boot the DSpico in BOOTSEL mode
 
 Let's get familiar with what you are holding. 
 
 It looks like a DS game card, but it has a Micro SD card slot and a hole in the side.
 
-The Mirco SD card slot, well, is where the Micro SD card goes.... uhhh... square block goes in the square hole. Mom would be so proud. The hole on the side is to access the Raspberry Pi Pico's bootsel button. With the way the DSpico is setup by the developers, you will most likely never need to use that button, but it was added as a fail safe just in case. 
+The Micro SD card slot, well, is where the Micro SD card goes.... uhhh... square block goes in the square hole. Mom would be so proud. The hole on the side is to access the Raspberry Pi Pico's boot select button. With the way the DSpico is set up by the developers, you will most likely never need to use that button, but it was added as a fail-safe just in case. 
 
-Grab you DSpico, eject the SD card if it has one, and plug your trusty dusty Micro USB-B cable into it and to your computer.  
+Grab your DSpico, eject the SD card if it has one, and plug your trusty dusty Micro USB-B cable into it and to your computer.  
 
-A file explorer window should pop up with a drive called "RPI-RP2" (On my PC, it was assigned to the I: drive, but that will vary). If the window doesn't pop up, go to it via File Explorer like you would if it were a flash drive. 
+A file explorer window should pop up with a drive called `RPI-RP2` (On my PC, it was assigned to the I: drive, but that will vary). If the window doesn't pop up, go to it via File Explorer like you would if it were a flash drive. 
 
 There should also be two files in there: `INDEX.HTM` and `INFO_UF2.TXT`. You can ignore those two files. 
- 
+
+##
 ### 6.2 - Move the firmware file over to the DSpico
 
-Go to the /dspico-firmware/build/ file where the `DSpico.uf2` firmware was compiled in [5.5 Compile the Firmware]. It is a bit busy in that file, but it is there, I promise.
+Go to the `/dspico-firmware/build/` file where the `DSpico.uf2` firmware was compiled in [5.5 - Compile the Firmware](#55---compile-the-firmware). It is a bit busy in that file, but it is there, I promise.
 
-Copy that `DSpico.uf2`, file, and paste it into the "RPI-RP2" drive that popup. 
+Copy that `DSpico.uf2` file, and paste it into the `RPI-RP2` drive that popup. 
 
-If everything is done correctly, the file explorer screen will disappear for a second, and reappear. That is intentional, and means you successfully flashed the firmware onto the Raspberry Pi Pico IC. 
+If everything is done correctly, the file explorer screen will disappear for a second and reappear. That is intentional, and means you successfully flashed the firmware onto the Raspberry Pi Pico IC. 
 
->I should mention there is no realistic way that I am aware of to tell if your DSpico has been flashed already. The only way to truly test if it is flashed is with the Loader and Launcher loaded up on an SD card and tested on a console (starting at [7. Compiling Pico Loader]). When you hook your DSpico into your PC, it will appear the same whether flashed or unflashed.
+>I should mention there is no realistic way that I am aware of to tell if your DSpico has been flashed already. The only way to truly test if it is flashed is with the Loader and Launcher loaded up on an SD card and tested on a console (starting at [7. Compiling Pico Loader](#7-compiling-pico-loader)). When you hook your DSpico into your PC, it will appear the same whether flashed or unflashed.
 
+##
 ### 6.3 - Disconnect the DSpico from the PC
 
 The DSpico is ready to go, and all it needs is an SD card with the launcher. Unplug the DSpico from your computer, and brace yourself for more terminal work.
@@ -817,9 +961,9 @@ The DSpico is ready to go, and all it needs is an SD card with the launcher. Unp
 
 ## 7. Compiling Pico Loader
 
-Your DSpico is flashed, but, in all respects, it is still a paper weight. What it needs now is an SD card loaded with the launcher and UI elements to make it functional.
+Your DSpico is flashed, but in all respects, it is still a paperweight. What it needs now is an SD card loaded with the launcher and UI elements to make it functional.
 
-> You can go through the steps below, or, just grab the pre-compiled files from GitHub.
+> You can go through the steps below, or just grab the pre-compiled files from GitHub.
 >
 > You will need `Pico.launcer.zip` from [Pico Launcher Repository](https://github.com/LNH-team/pico-launcher)
 > 
@@ -827,41 +971,54 @@ Your DSpico is flashed, but, in all respects, it is still a paper weight. What i
 > 
 > Unzip both, and drop the contents of `Pico_Loader_DSPICO` into the `_pico` file of `Pico.Launcher`, rename `LAUNCHER.nds` to `_picoboot.nds`, and drop both that and the `_pico` folder into the root of your SD Card. Done. 
 
+##
 ### 7.1 - Clone the Pico Loader repository
 
-If there are any new folks here who have a pre-flashed DSpico, and want to compile their own Pio Loader and Pico Launcher, well, hi, how are you?
+If there are any new folks here who have a pre-flashed DSpico and want to compile their own Pio Loader and Pico Launcher, well, hi, how are you?
 
-You will need jump back to and complete [0. Prerequisites] to get WSL and all of the various tool chains and components installed in order to compile Pico Loader and Pico Launcher.
+You will need to jump back to and complete [0. Prerequisites](#0-prerequisites) to get WSL and all of the various tool chains and components installed in order to compile Pico Loader and Pico Launcher.
 
 To the folks who have been sticking with me this long, hell, y'all deserve a sticker. 
 
 You know the drill at this point. In your WSL terminal, set your current directory to your project file. 
 
-`cd ~`
+```
+cd ~
+```
 
 And then... do I even need to say it? I mean... I will because I'm a bit of a perfectionist and like the idea of having all of the relevant commands and links there for... oh... *cough*  Clone the [Pico Loader Repository](https://github.com/LNH-team/pico-loader).
 
-`git clone https://github.com/LNH-team/pico-loader.git`
+```
+git clone https://github.com/LNH-team/pico-loader.git
+```
 
+##
 ### 7.2 - Initialize the Submodules
 
 Set the current directory to the file you just cloned.
 
-`cd ~/pico-loader/`
+```
+cd ~/pico-loader/
+```
 
 Then, initialize the submodule:
 
-`git submodule update --init`
+```
+git submodule update --init
+```
 
+##
 ### 7.3 - Run make
 
 Do the thing!
 
-`make`
+```
+make
+```
 
 This one takes a minute.
 
-If everything was done correctly, you should have a Four different files that were made (two in the main directory and two in the /data/ file). These will be relevant later, so for now, pat on the back, and let's move on.
+If everything was done correctly, you should have four different files that were made (two in the main directory and two in the `/data/` file). These will be relevant later, so for now, pat on the back, and let's move on.
 
 ---
 
@@ -869,31 +1026,44 @@ If everything was done correctly, you should have a Four different files that we
 
 This is practically a 1:1 copy of what we just did, so let's shuffle through it. 
 
+##
 ### 8.1 - Clone the Pico Launcher Repository
 
 Set the current directory to your project file:
 
-`cd ~`
+```
+cd ~
+```
 
 And clone the [Pico Launcher Repository](https://github.com/LNH-team/pico-launcher)
 
-`git clone https://github.com/LNH-team/pico-launcher.git`
+```
+git clone https://github.com/LNH-team/pico-launcher.git
+```
 
+##
 ### 8.2 - Initialize the Submodules
 
 Set the current directory to the file you just cloned.
 
-`cd ~/pico-launcher/`
+```
+cd ~/pico-launcher/
+```
 
 Then, initialize the submodule:
 
-`git submodule update --init`
+```
+git submodule update --init
+```
 
+##
 ### 8.3 - Run Make
 
 Say it with me, one final time. RUN MAKE!!!
 
-`make`
+```
+make
+```
 
 This one also takes a minute. 
 
@@ -905,23 +1075,26 @@ If everything is done correctly, `LUANCHER.nds` should be in the directory.
 
 ### 9.1 - Formatting your SD Card
 
-This is an important step that I see flubbed up all the time in the Homebrew scene. Do it right the first time so you aren't scratching your head wondering why it isn't working.
+This is an important step that I see flubbed up all the time in the Homebrew scene. Do it right the first time so you aren't scratching your head, wondering why it isn't working.
 
 Insert your SD card into your PC through whatever method available to you, then jump over to [SD Card Setup](https://dsi.cfw.guide/sd-card-setup.html) guide and run through the process there. 
 
-Since that is linked to a guide that is subject to change, I will not repeat the contents here as to not conflict with it. It is a good guide, so you are in good hands. 
+Since that is linked to a guide that is subject to change, I will not repeat the contents here so as not to conflict with it. It is a good guide, so you are in good hands. 
 
+##
 ### 9.2 - Migrating Files to the SD Card
 
-I would LOVE to have just a big ol' command that moves everything from the various folders to your SD Card, but since the drive letter your SD card will be under will not be the same as mine, I can't. I can, however, get a command together that will grab everything and drop it into a `SD_Card` folder that you can then copy and paste onto your SD card. Yeah, I like that. 
+I would LOVE to have just a big ol' command that moves everything from the various folders to your SD Card, but since the drive letter your SD card will be under will not be the same as mine, I can't. I can, however, get a command together that will grab everything and drop it into an `SD_Card` folder that you can then copy and paste onto your SD card. Yeah, I like that. 
 
 Set the current directory to your project folder:
 
-`cd ~`
+```
+cd ~
+```
 
-Run this big beautiful bash command:
+Run this big, beautiful bash command:
 
-```bash
+```
 mkdir -p ~/SD_Card/
 mv ~/pico-launcher/_pico ~/SD_Card/
 mv ~/pico-launcher/LAUNCHER.nds ~/SD_Card/_picoboot.nds
@@ -930,10 +1103,10 @@ mv ~/pico-loader/picoLoader9_DSPICO.bin ~/SD_Card/_pico/picoLoader9.bin
 mv ~/pico-loader/data/aplist.bin ~/SD_Card/_pico/
 mv ~/pico-loader/data/savelist.bin ~/SD_Card/_pico/
 ```
-This will make a file on your /home/username/ directory called /SD_Card/ and sort everything to how it should look on the SD card. Move the contents of the /home/Username/SD_Card/ file to the root of your SD card. 
+This will make a file in your `/home/username/` directory called `/SD_Card/` and sort everything to how it should look on the SD card. Move the contents of the `/home/Username/SD_Card/` file to the root of your SD card. 
 
 The final directory structure of the SD Card will look like this:
-```
+`
 .
 ├── _pico
 │   ├── themes
@@ -958,9 +1131,9 @@ The final directory structure of the SD Card will look like this:
 │   ├── picoLoader7.bin
 │   └── picoLoader9.bin
 └── _picoboot.nds
-```
+`
 
-Copy any DS roms to your micro SD card. It is recommended to make a folder to put them in.
+Copy any DS ROMs to your micro SD card. It is recommended to make a folder to put them in.
 
 Note: If you want to play DSiWare on the DSpico, additional files are required. See the Pico Loader readme in the [Pico Launcher Repository](https://github.com/LNH-team/pico-launcher) for more information.
 
@@ -970,12 +1143,15 @@ Note: If you want to play DSiWare on the DSpico, additional files are required. 
 
 This is it. The finish line is in sight. 
 
+##
 ### 10.1 - Slot your SD Card into the DSPico
+
 
 Safely eject your Micro SD card from your computer, pop it into your DSpico, and click the happy couple into your DS of choice. 
 
 Take a deep breath, and power the console on. 
 
+##
 ### 10.2 - Profit
 
 If you did everything correctly, 1 of 2 things will happen. 
@@ -986,6 +1162,7 @@ If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a no
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
 
+##
 
 
 
