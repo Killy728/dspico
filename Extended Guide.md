@@ -214,7 +214,7 @@ Follow the link [Wonderful Toolchain Getting Started - Linux](https://wonderful.
 ##
 #### 0.2.2 - Download Bootstrap (x86_64)
 
-Under Downloads, install the file that fits your CPU architecture. Your options are either x86 or ARM. On Windows, it is mostly likely to be the former: Bootstrap (x86_64). 
+Under Downloads, install the file that fits your CPU architecture. Your options are either x86 or ARM. On Windows, it is mostly likely to be the former: `Bootstrap (x86_64)`. 
 
 > If you are unsure, in your terminal, run the command:
 >
@@ -1163,6 +1163,7 @@ If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a no
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
 
 ##
+
 
 
 
