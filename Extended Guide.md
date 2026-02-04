@@ -68,8 +68,8 @@ Anyway, on to the guide!
 		- [0.3.2 - Install SDK](#032---install-sdk)
 	- [0.4 - Prerequisite Packages](#04---prerequisite-packages)
 	- [0.5 - Set an environment variable for dlditool](#05---set-an-environment-variable-for-dlditool)
-- [1. Getting and Assembling your DSpico](#1---getting-and-assembling-your-dspico)
-- [2. Compiling the DSpico DLDI](#2---compiling-the-dspico-dldi)
+- [1. Getting and Assembling your DSpico](#1--getting-and-assembling-your-dspico)
+- [2. Compiling the DSpico DLDI](#2--compiling-the-dspico-dldi)
 	- [2.1 - Setting up the Current Directory where the Action will Happen](#21---setting-up-the-current-directory-where-the-action-will-happen)
 	- [2.2 - Clone the DSpico DLDI Repository](#22---clone-the-dspico-dldi-repository)
 	- [2.3 - Run Make to create the DLDI](#23---run-make-to-create-the-dldi)
@@ -969,6 +969,7 @@ If you prepped the Firmware to run in DSi mode, and you are using an unmodified 
 If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a normal game (or flashcart).
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+
 
 
 
