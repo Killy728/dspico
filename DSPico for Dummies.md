@@ -90,7 +90,7 @@ Anyway, on to the guide!
 	- [5.1 - Clone the DSpico Firmware Repository]
 	- [5.2 - Initialize the Submodules for DSpico Firmware]
 	- [5.3 - Move the default.nds File]
-	- [5.4 - Optional: Including Wrfuxxed](#54---optional--including wrfuxxed)
+	- [5.4 - Optional: Including Wrfuxxed](#54---optional:-including-wrfuxxed)
 		- [5.4.1 - Verifying WRFU Tester v0.60 ROM Dump](#541---verifying-wrfu-tester-v060-rom-dump)
 		- [5.4.2 - Move the uartBufv060.bin to the data folder]
 		- [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt]
@@ -969,6 +969,7 @@ If you prepped the Firmware to run in DSi mode, and you are using an unmodified 
 If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a normal game (or flashcart).
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+
 
 
 
