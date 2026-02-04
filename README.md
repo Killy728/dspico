@@ -4,7 +4,7 @@ This repository serves as an index for the DSpico project. See the repositories 
 ## Guide
 See [here](GUIDE.md) for a guide that describes how to fully setup your DSpico.
 
-If you need additional help, check out the [here][Extended Guide.md]
+If you need additional help, check out the [Extended Guide](Extended-Guide.md)
 
 ## Components
 - [DSpico Hardware](https://github.com/LNH-team/dspico-hardware) - The hardware of the DSpico.
