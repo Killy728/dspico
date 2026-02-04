@@ -33,7 +33,7 @@ The things you will need are:
 - A USB 2.0 Micro-B cable in order to interface with the DSpico (These were the standard device charging cables before USB Type-C became all the rage).
 - and.... ummm... *scratches back of head* (see below)
 
-<!-- REVIEW: Since I am, more or less, exclusively using the WSL terminal, doesn't that make anything I say applicable to a Linux or Apple OS barring some file explorer navigation? -->
+<!-- REVIEW: Since I am, more or less, exclusively using the WSL terminal, doesn't that make anything I say applicable to a Linux or Apple OS, barring some file explorer navigation? -->
 
 **WARNING!**
 
@@ -47,72 +47,72 @@ Anyway, on to the guide!
 
 ## Table of Contents
 - [0. Prerequisites](#0-prerequisites)
-	- [0.1 - Ensure you have a Linux or WSL (Windows Subsystem for Linux) Environment set up]
-		- [0.1.1 - Download WSL]
-		- [0.1.2 - Setting Up WSL]
-		- [0.1.3 - Getting Used to the WSL File System]
-	- [0.2 - Install BlocksDS and the Wonderful Toolchain]
-		- [0.2.1 - Install Wonderful Toolchain]
-		- [0.2.2 - Download Bootstrap (x86_64)] 
-		- [0.2.3 - Create the Wonderful File within /opt/]
-		- [0.2.4 - Give permissions to Wonderful to your Current User]
-		- [0.2.5 - Extract Bootstrap]
-		- [0.2.6 - Enable File Name Extensions in File Explorer if you Haven't Already]
-		- [0.2.7 - Synchronize and update the Toolchain's Package Manager]
-		- [0.2.8 - Configure the Toolchain's Environmental Variables]
-		- [0.2.9 - Add the BlocksDS repository to wf-pacman]
-		- [0.2.10 - Install the ARM Toolchain and BlocksDS]
-		- [0.2.11 - Setup environment variables]
-	- [0.3 - Install .NET 9.0]
-		- [0.3.1 - Add Backports Repository]
-		- [0.3.2 - Install SDK]
-	- [0.4 - Prerequisite Packages]
-	- [0.5 - Set an environment variable for dlditool]
-- [1. Getting and Assembling your DSpico]
-- [2. Compiling the DSpico DLDI]
-	- [2.1 - Setting up the Current Directory where the Action will Happen]
-	- [2.2 - Clone the DSpico DLDI Repository]
-	- [2.3 - Run Make to create the DLDI]
-- [3. Compiling the DSpico Bootloader]
-	- [3.1 - Clone the DSpico Bootloader repository]
-	- [3.2 - Initialize the Submodules]
-	- [3.3 - Make the Bootloader]
-	- [3.4 - Patch the BOOTLOADER.nds with DSpico.dldi]
-	- [3.5 - Clone the DSRomEncryptor Repository]
-	- [3.6 - Compile DSRomEncryptor]
-	- [3.7 - NTR and/or TWL Blowfish Tables]
-	- [3.8 - Finalizing the BOOTLOADER]
-- [4. Optional: Compiling Wrfuxxed]
-	- [4.1 - Clone the Wrfuxxed repository]
-	- [4.2 - Run Make in the WRfuxxed file]
-	- [4.3 - DLDI Patch the Exploit]
-- [5. Compiling the DSpico Firmware]
-	- [5.1 - Clone the DSpico Firmware Repository]
-	- [5.2 - Initialize the Submodules for DSpico Firmware]
-	- [5.3 - Move the default.nds File]
+	- [0.1 - Ensure you have a Linux or WSL (Windows Subsystem for Linux) Environment set up](01---ensure-you-have-a-linux-or-wsl-windows-subsystem-for-linux-environment-set-up)
+		- [0.1.1 - Download WSL](#011---download-wsl)
+		- [0.1.2 - Setting Up WSL](#012---setting-up-wsl)
+		- [0.1.3 - Getting Used to the WSL File System](#013---getting-used-to-the-wsl-file-system)
+	- [0.2 - Install BlocksDS and the Wonderful Toolchain](#02---install-blocksds-and-the-wonderful-toolchain)
+		- [0.2.1 - Install Wonderful Toolchain](#021---install-wonderful-toolchain)
+		- [0.2.2 - Download Bootstrap (x86_64)](#022---download-bootstrap-x86_64)
+		- [0.2.3 - Create the Wonderful File within /opt/](#023---create-the-wonderful-file-within-opt)
+		- [0.2.4 - Give permissions to Wonderful to your Current User](#024---give-permissions-to-wonderful-to-your-current-user)
+		- [0.2.5 - Extract Bootstrap](#025---extract-bootstrap)
+		- [0.2.6 - Enable File Name Extensions in File Explorer if you Haven't Already](#026---enable-file-name-extensions-in-file-explorer-if-you-havent-already)
+		- [0.2.7 - Synchronize and update the Toolchain's Package Manager](#027---synchronize-and-update-the-toolchains-package-manager)
+		- [0.2.8 - Configure the Toolchain's Environmental Variables](#028---configure-the-toolchains-environmental-variables)
+		- [0.2.9 - Add the BlocksDS repository to wf-pacman](#029---add-the-blocksds-repository-to-wf-pacman)
+		- [0.2.10 - Install the ARM Toolchain and BlocksDS](#0210---install-the-arm-toolchain-and-blocksds)
+		- [0.2.11 - Setup environment variables](#0211---setup-environment-variables)
+	- [0.3 - Install .NET 9.0](#03---install-net-90)
+		- [0.3.1 - Add Backports Repository](#031---add-backports-repository)
+		- [0.3.2 - Install SDK](#032---install-sdk)
+	- [0.4 - Prerequisite Packages](#04---prerequisite-packages)
+	- [0.5 - Set an environment variable for dlditool](#05---set-an-environment-variable-for-dlditool)
+- [1. Getting and Assembling your DSpico](#1---getting-and-assembling-your-dspico)
+- [2. Compiling the DSpico DLDI](#2---compiling-the-dspico-dldi)
+	- [2.1 - Setting up the Current Directory where the Action will Happen](#21---setting-up-the-current-directory-where-the-action-will-happen)
+	- [2.2 - Clone the DSpico DLDI Repository](#22---clone-the-dspico-dldi-repository)
+	- [2.3 - Run Make to create the DLDI](#23---run-make-to-create-the-dldi)
+- [3. Compiling the DSpico Bootloader](#3---compiling-the-dspico-bootloader)
+	- [3.1 - Clone the DSpico Bootloader repository](#31---clone-the-dspico-bootloader-repository)
+	- [3.2 - Initialize the Submodules](#32---initialize-the-submodules)
+	- [3.3 - Make the Bootloader](#33---make-the-bootloader)
+	- [3.4 - Patch the BOOTLOADER.nds with DSpico.dldi](#34---patch-the-bootloadernds-with-dspicodldi)
+	- [3.5 - Clone the DSRomEncryptor Repository](#35---clone-the-dsromencryptor-repository)
+	- [3.6 - Compile DSRomEncryptor](#36---compile-dsromencryptor)
+	- [3.7 - NTR and/or TWL Blowfish Tables](#37---ntr-andor-twl-blowfish-tables)
+	- [3.8 - Finalizing the BOOTLOADER](#38---finalizing-the-bootloader)
+- [4. Optional: Compiling Wrfuxxed](#4---optional-compiling-wrfuxxed)
+	- [4.1 - Clone the Wrfuxxed repository](#41---clone-the-wrfuxxed-repository)
+	- [4.2 - Run Make in the WRfuxxed file](#42---run-make-in-the-wrfuxxed-file)
+	- [4.3 - DLDI Patch the Exploit](#43---dldi-patch-the-exploit)
+- [5. Compiling the DSpico Firmware](#5---compiling-the-dspico-firmware)
+	- [5.1 - Clone the DSpico Firmware Repository](#51---clone-the-dspico-firmware-repository)
+	- [5.2 - Initialize the Submodules for DSpico Firmware](#52---initialize-the-submodules-for-dspico-firmware)
+	- [5.3 - Move the default.nds File](#53---move-the-defaultnds-file)
 	- [5.4 - Optional: Including Wrfuxxed](#54---optional-including-wrfuxxed)
 		- [5.4.1 - Verifying WRFU Tester v0.60 ROM Dump](#541---verifying-wrfu-tester-v060-rom-dump)
-		- [5.4.2 - Move the uartBufv060.bin to the data folder]
-		- [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt]
-	- [5.5 - Compile the Firmware]
-- [6. Flashing the DSpico]
-	- [6.1 - Boot the DSpico in BOOTSEL mode]
-	- [6.2 - Move the firmware file over to the DSpico]
-	- [6.3 - Disconnect the DSpico from the PC]
-- [7. Compiling Pico Loader]
-	- [7.1 - Clone the Pico Loader Repository]
-	- [7.2 - Initialize the Submodules]
-	- [7.3 - Run make]
-- [8. Compiling Pico launcher]
-	- [8.1 - Clone the Pico Launcher Repository]
-	- [8.2 - Initialize the Submodules]
-	- [8.3 - Run Make]
-- [9. Prepare the Micro SD Card]
-	- [9.1 - Formatting your SD Card]
-	- [9.2 - Migrating Files to the SD Card]
-- [10. Test your DSpico]
-	- [10.1 - Slot your SD Card into the DSPico]
-	- [10.2 - Profit]
+		- [5.4.2 - Move the uartBufv060.bin to the data folder](#542---move-the-uartbufv060bin-to-the-data-folder)
+		- [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt](#543---uncomment-the-dspico_enable_wrfuxxed-option-in-cmakeliststxt)
+	- [5.5 - Compile the Firmware](#55---compile-the-firmware)
+- [6. Flashing the DSpico](#6---flashing-the-dspico)
+	- [6.1 - Boot the DSpico in BOOTSEL mode](#61---boot-the-dspico-in-bootsel-mode)
+	- [6.2 - Move the firmware file over to the DSpico](#62---move-the-firmware-file-over-to-the-dspico)
+	- [6.3 - Disconnect the DSpico from the PC](#63---disconnect-the-dspico-from-the-pc)
+- [7. Compiling Pico Loader](#7---compiling-pico-loader)
+	- [7.1 - Clone the Pico Loader Repository](#71---clone-the-pico-loader-repository)
+	- [7.2 - Initialize the Submodules](#72---initialize-the-submodules)
+	- [7.3 - Run make](#73---run-make)
+- [8. Compiling Pico launcher](#8---compiling-pico-launcher)
+	- [8.1 - Clone the Pico Launcher Repository](#81---clone-the-pico-launcher-repository)
+	- [8.2 - Initialize the Submodules](#82---initialize-the-submodules)
+	- [8.3 - Run Make](#83---run-make)
+- [9. Prepare the Micro SD Card](#9---prepare-the-micro-sd-card)
+	- [9.1 - Formatting your SD Card](#91---formatting-your-sd-card)
+	- [9.2 - Migrating Files to the SD Card](#92---migrating-files-to-the-sd-card)
+- [10. Test your DSpico](#10---test-your-dspico)
+	- [10.1 - Slot your SD Card into the DSPico](#101---slot-your-sd-card-into-the-dspico)
+	- [10.2 - Profit](#102---profit)
 
 
 ## 0. Prerequisites
@@ -969,6 +969,7 @@ If you prepped the Firmware to run in DSi mode, and you are using an unmodified 
 If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a normal game (or flashcart).
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+
 
 
 
