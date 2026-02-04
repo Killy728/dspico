@@ -46,7 +46,7 @@ This project does not provide instructions, tools, or guidance for extracting bi
 Anyway, on to the guide!
 
 ## Table of Contents
-- [#0. Prerequisites]
+- [Test] (#0. Prerequisites)
 	- [0.1 - Ensure you have a Linux or WSL (Windows Subsystem for Linux) Environment set up]
 		- [0.1.1 - Download WSL]
 		- [0.1.2 - Setting Up WSL]
@@ -970,4 +970,5 @@ If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a no
 
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+
 
