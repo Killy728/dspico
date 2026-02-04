@@ -7,7 +7,7 @@ This guide assumes <u>nothing!</u>
 - No Knowledge of WSL or Linux
 - No flaky WiFi on your personal laptop that has been by your side since you 2nd year of University and... right.
 
-What this guide does assume is you have an unflashed DSPico that you don't know how to set up or want to reflash for any reason. If you want to get one built, head down over to the [DSpico hardware repository](https://github.com/LNH-team/dspico-hardware). 
+What this guide does assume is you have an unflashed DSPico that you don't know how to set up or want to reflash for any reason. If you want to get one built, head down over to the [#DSpico hardware repository](https://github.com/LNH-team/dspico-hardware). 
 
 <!-- REVIEW: I am not aware of any feasible method of checking whether or not the DSpico has been flashed aside from, maybe, trying with an SD card loaded with Pico Launcher. -->
 
@@ -967,5 +967,6 @@ If you did everything correctly, 1 of 2 things will happen.
 If you prepped the Firmware to run in DSi mode, and you are using an unmodified DSi, it'll hijack the boot process and plop you right into Pico Laucher. 
 
 If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a normal game (or flashcart).
+
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
