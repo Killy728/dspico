@@ -1,47 +1,47 @@
 # DSpico for Dummies - An Extended DSpico Guide
 This guide aims to bridge the gap between the tech plebeians who have only used the command terminal once or twice and software engineering wizards who might as well be speaking their own language.
 
-This guide assumes <u>nothing!</u>
+This guide assumes nothing!
 - No Preinstalled Apps
 - No Preinstalled Toolchains
 - No Knowledge of WSL or Linux
-- No flaky WiFi on your personal laptop that has been by your side since you 2nd year of University and... right.
+- No flaky WiFi on your personal laptop that has been by your side since your 2nd year of university, and... right.
 
-What this guide does assume is you have an unflashed DSPico that you don't know how to set up or want to reflash for any reason. If you want to get one built, head down over to the [DSpico hardware repository](https://github.com/LNH-team/dspico-hardware). 
+What this guide does assume is that you have an unflashed DSPico that you don't know how to set up or want to reflash for any reason. If you want to get one built, head down over to the [DSpico hardware repository](https://github.com/LNH-team/dspico-hardware). 
 
 <!-- REVIEW: I am not aware of any feasible method of checking whether or not the DSpico has been flashed aside from, maybe, trying with an SD card loaded with Pico Launcher. -->
 
-This guide also assumed that DSpicos purchased from various marketplaces have already been flashed and provides an SD card with Pico Launcher on it. The DSpico should work just fine in that case, meaning, this guide is not for you. 
+This guide also assumes that DSpicos purchased from various marketplaces have already been flashed and provides an SD card with Pico Launcher on it. The DSpico should work just fine in that case, meaning this guide is not for you. 
 
-If you are unsure if your DSpico has been flashed with firmware, jump to [7. Compiling Pico Loader] to get an SD card loaded with the Pico Launcher to test. If you have you SD card prepped, inserted into the DSPico, and it doesn't show up on your DS, chances are, there is something wrong with the firmware, device or SD card. 
+If you are unsure if your DSpico has been flashed with firmware, jump to [7. Compiling Pico Loader](#7-compiling-pico-loader) to get an SD card loaded with the Pico Launcher to test. If you have your SD card prepped, inserted into the DSPico, and it doesn't show up on your DS, chances are, there is something wrong with the firmware, device, or SD card. 
 
 Which, I mean, in that case, just return the thing and let the seller deal with it. You bought what was supposed to be a working DSpico after all, so it's not your responsibility to fix it and go through all of this just to get it to the state where it was supposed to be when you first bought it. That is just rude on their part, and.... oh... 
 
-<!-- REVIEW: I don't know if there will be any issues with Marketplace versions of the DSpico that show up. However, I think it is prudent to tackle any troubleshooting issues right off the bat. Realistically, if you buy a DSPicofrom a marketplace, and it doesn't work, you should just return the thing for are fund, but for any odd ball cases where that is not an option, having a method to know whether or not it works and apply an appropriate solution makes sense to me
+<!-- REVIEW: I don't know if there will be any issues with Marketplace versions of the DSpico that show up. However, I think it is prudent to tackle any troubleshooting issues right off the bat. Realistically, if you buy a DSpicofrom a marketplace, and it doesn't work, you should just return the thing for are fund, but for any oddball cases where that is not an option, having a method to know whether or not it works and apply an appropriate solution makes sense to me
 
-The only thing I can think of is marketplaces, like AliExpress, only shipping with NTR firmware, and not TWL. Marketplaces may not advertise it as compatible with DSi applications and games, so there might be a need to rebuild firmware with the DSi bios. --->  
+The only thing I can think of is marketplaces, like AliExpress, that only ship with NTR firmware, and not TWL. Marketplaces may not advertise it as compatible with DSi applications and games, so there might be a need to rebuild firmware with the DSi bios. --->  
 
 *clears throat*
 
-This guide was written by me, a fellow dummy, going step-by-step on a fresh Window 11 install. And, yeah, I am using Windows 11 as the basis to write this guide.
+This guide was written by me, a fellow dummy, going step-by-step on a fresh Windows 11 install. And, yeah, I am using Windows 11 as the basis to write this guide.
 
 The things you will need are:
 - A PC or Laptop (Hopefully somewhat obvious).
-- The ability to read Micro SD Cards on your PC (be it though adapters, dongles, or whatever)
+- The ability to read Micro SD Cards on your PC (be it through adapters, dongles, or whatever)
 - The DSpico Flashcart (Hopefully also obvious)
-- A Micro SD card for the DSpico (if your didn't have one already)
-- A USB 2.0 Micro-B cable in order to interface with the DSpico (These were the standard device charging cables before USB Type-C became all the rage).
+- A Micro SD card for the DSpico (if you didn't have one already)
+- A USB 2.0 Micro-B cable to interface with the DSpico (These were the standard device charging cables before USB Type-C became all the rage).
 - and.... ummm... *scratches back of head* (see below)
 
 <!-- REVIEW: Since I am, more or less, exclusively using the WSL terminal, doesn't that make anything I say applicable to a Linux or Apple OS, barring some file explorer navigation? -->
 
-**WARNING!**
-
-To compile the firmware, you will need:
-- (<u>Required</u>) A personal backup of the bios from your own device.
-- (For DSi Mode) A specific development firmware package.
-
-This project does not provide instructions, tools, or guidance for extracting bios or sourcing the firmware package. We cannot advise on methods for bypassing protections or accessing proprietary code. I am sorry, but this is how it is. I will provide as much information as I think is necessary, but to be blunt, you are on your own and we cannot help you. 
+>**WARNING!**
+>
+>To compile the firmware, you will need:
+>- (Required) A personal backup of the bios from your own device.
+>- (For DSi Mode) A specific development firmware package.
+>
+>This project does not provide instructions, tools, or guidance for extracting bios or sourcing the firmware package. We cannot advise on methods for bypassing protections or accessing proprietary code. I am sorry, but this is how it is. I will provide as much information as I think is necessary, but to be blunt, you are on your own, and we cannot help you. 
 
 Anyway, on to the guide!
 
@@ -123,25 +123,27 @@ Anyway, on to the guide!
 
 Windows Subsystem for Linux (WSL), rather, the Linux File System and Terminal will be the backbone of this entire project. You will become very familiar with how to dart around those files via the terminal and bend the universe to your will!!! (maybe not so much the last part).
 
-Since I am on Windows OS, I will be needing WSL.
+Since I am on Windows OS, I will need WSL.
 
->For Mac, well, there is nothing that I can offer sorry to say. WSL runs with Ubuntu as default, and you can bet there is some software wizard who figured out how to run it on Apple devices. 
+>For Mac, well, there is nothing that I can offer, sorry to say. WSL runs Ubuntu as the default, and you can bet there is some software wizard who figured out how to run it on Apple devices. 
 
 PowerShell will not be used in this project after this point, but is needed to install WSL and the Linux distribution, Ubuntu. 
 
-Right click the Start Menu, and open "Terminal (Admin)". If a scary pop-up asks if you're OK with the app making changes to your device, click "Yes" (You might get a password prompt instead is you, for instance, share the computer you are on).
+Right-click the Start Menu and open `Terminal (Admin)`. If a scary pop-up asks if you're OK with the app making changes to your device, click "Yes" (You might get a password prompt instead if you, for instance, share the computer you are on).
 
 Then run the command:
 
-`wsl --install`
+```bash
+wsl --install
+```
 
-After it is finished, it will ask you to reboot your PC. After rebooting, open the terminal again, run the command again. This time, it will install the Linux Distribution, Ubuntu.
+After it is finished, it will ask you to reboot your PC. After rebooting, open the terminal again and run the command again. This time, it will install the Linux Distribution, Ubuntu.
 
-> If it doesn't ask you to reset, and instead begins downloading Ubuntu, then you already had WSL on your computer. Look at you, you overachiever you. 
+> If it doesn't ask you to reset and instead begins downloading Ubuntu, then you already have WSL on your computer. Look at you, you overachiever you.
 
 #### 0.1.2 - Setting Up WSL
 
-Let's start with the initial set up and creating your profile.
+Let's start with the initial setup and creating your profile.
 
 Type in your desired username. This will be the username for your user directory file /home/Username/. Note that you can only use lowercase characters.
 
@@ -149,27 +151,33 @@ Press enter, and you will be prompted to create a new password and... **WAIT!!!!
 
 *Deep breaths*
 
-Before you begin freaking out that something horrible happened to keyboard, there is something about Linux that you need to know. 
+Before you begin freaking out that something horrible happened to your keyboard, there is something about Linux that you need to know. 
 
-When you try to type in a password, nothing comes up on screen. This is an intentional security feature of Linux. Even though you type your favorite password (totally not password1), you are, in a sense, entering it. Linux just hides your keys from your screen. When setting a password, I suggest you type slow.  
+When you try to type in a password, nothing comes up on the screen. This is an intentional security feature of Linux. Even though you type your favorite password (totally not password1), you are, in a sense, entering it. Linux just hides your keys from your screen. When setting a password, I suggest you type slowly.  
 
-> If you forget your password (or didn't realize you had caps lock on when typing the password. Don't ask.) you will need to do a couple of things. You will need to run WSL as root to bypass the security. This needs to be done through Powershell and not the WSL terminal (refer back to [0.1.1 - Download WSL] if you forgot how).
+> If you forget your password (or didn't realize you had caps lock on when typing the password, don't ask), you will need to do a couple of things. You will need to run WSL as root to bypass the security. This needs to be done through PowerShell and not the WSL terminal (refer back to [0.1.1 - Download WSL](#011---download-wsl) if you forgot how).
 >
-> In Powershell, run the command:
+> In PowerShell, run the command:
 >
-> `wsl -d Ubuntu --user root`
+> ```bash
+> wsl -d Ubuntu --user root
+> ```
 >
 > Then:
 >
-> `passwd <your_username>`
+> ```bash
+> passwd <your_username>
+> ```
 >
-> You should be prompted to use create a new password. 
+> You should be prompted to create a new password. 
 >
-> If you forgot your username, either look in the /home/ Ubuntu folder, or by running the command:
+> If you forgot your username, either look in the /home/ Ubuntu folder, or run the command:
 >
-> `ls /home`
+> ```bash
+> ls /home
+> ```
 
-You will not have to enter your password often, however, it does come up sometimes when running certain commands. If you have to close the WSL Terminal for any reason, for example, it will prompt for a password when you try to run certain commands.
+You will not have to enter your password often; however, it does come up sometimes when running certain commands. If you have to close the WSL Terminal for any reason, for example, it will prompt for a password when you try to run certain commands.
 
 If your password was updated successfully, you should see some green and blue text to the left of your cursor that has your profile and computer's name. 
 
@@ -179,24 +187,24 @@ And just like a normal terminal, if you are at all familiar with it, that is whe
 
 I wanted to add this section to get you familiar with where exactly everything will be taking place. That is to say, the files where the action happens. 
 
-Open up File Explore, the folder icon, and on the left-hand side, scroll down to the bottom. There, you should see a little penguin with "Linux" printed next to it. Opening that, you'll see Ubuntu which is the Linux environment that WSL uses. 
+Open up File Explorer, the folder icon, and on the left-hand side, scroll down to the bottom. There, you should see a little penguin with `Linux` printed next to it. Opening that, you'll see Ubuntu, which is the Linux environment that WSL uses. 
 
 Open the Ubuntu file you will be met with a whole load of files. Now, there are 2 files that are important to remember. 
 
-- /opt/
-- /home/
+`/opt/`
+`/home/`
 
-/opt/ will house the Wonderful file which will have toolchains and other bits needed for DSpico. It is currently empty, and you will not have to go into this file after you populate it.
+/opt/ will house the Wonderful file, which will have toolchains and other bits needed for DSpico. It is currently empty, and you will not have to go into this file after you populate it.
 
-/home/ contains your /username/ folder where the project will take place in. 
+/home/ contains your /username/ folder, where the project will take place. 
 
-I like to keep File Explorer open on my screen to see what is going on in the file system as I download and run various commands. It's also helpful when setting current directories as you need to reference specific file names that you download.
+I like to keep File Explorer open on my screen to see what is going on in the file system as I download and run various commands. It's also helpful when setting current directories, as you need to reference specific file names that you download.
 
 ### 0.2 - Install BlocksDS and the Wonderful Toolchain
 
 #### 0.2.1 - Install Wonderful Toolchain
 
-Follow the guide a the link [Wonderful Toolchain Getting Started - Linux](https://wonderful.asie.pl/wiki/doku.php?id=getting_started:linux).
+Follow the link [Wonderful Toolchain Getting Started - Linux](https://wonderful.asie.pl/wiki/doku.php?id=getting_started:linux).
 
 #### 0.2.2 - Download Bootstrap (x86_64)  
 
@@ -210,7 +218,7 @@ Under Downloads, install the file that fits your CPU architecture. Your options 
 
 #### 0.2.3 - Create the Wonderful File within /opt/
 
-Now, follow the directions under the "Installation Instruction" in the order they appear. There is more information on what the commands do and why certain notation is used. Though not critical to the project, it is worth the read.
+Now, follow the directions under the "Installation Instructions" in the order they appear. There is more information on what the commands do and why certain notation is used. Though not critical to the project, it is worth reading.
 
 I'll list the commands below as they appear in the Installation Instructions. They are the same, so whatever guide you want to follow is fine with me.
 
@@ -218,7 +226,7 @@ Start by running:
 
 `sudo mkdir /opt/wonderful`
 
-This is one of those moments where you need your password. The "sudo" prefix is telling terminal to run that command as an administrator, so, the password is to prove you are you. No fake IDs at this bar. 
+This is one of those moments where you need your password. The "sudo" prefix is telling the terminal to run that command as an administrator, so the password is to prove you are you. No fake IDs at this bar. 
 
 Once you put in your password, nothing will happen. Well... yes and no. This is also a Linux feature where it functions on the philosophy of "No news is good news". What the command did was create a file called "wonderful" within the /opt/ file. If you navigate to the /opt/ file, you'll see "wonderful" in there. 
 
@@ -232,7 +240,7 @@ Again, nothing will happen, but that is good.
 
 #### 0.2.5 - Extract Bootstrap
 
-The next command is a bit more complicated as it is a command to extract the contents of the bootstrap file you downloaded into the wonderful folder. 
+The next command is a bit more complicated, as it is a command to extract the contents of the bootstrap file you downloaded into the wonderful folder. 
 
 Now, there is probably a million ways to do this, but I found the way that works for me is to take the file you downloaded, "wf-bootstrap-x86_64.tar.gz" from you Downloads folder, and drop it into the /opt/wonderful/ folder in Linux.
 
@@ -242,13 +250,13 @@ Once in your wonderful folder, run this command to extract it:
 
 The terminal should be loaded with a whole lot of different files. If you look in the wonderful folder (refresh if you were already there), you should see it now populated with a whole bunch of different folders and files. 
 
-Now, if you're sharp eyed, why the heck did I have to add ".gz" to the end of the Bootstrap file when writing the command? That is the file extension which, by default, is hidden on Windows. Now is the time to enable as it will be important later. 
+Now, if you're sharp-eyed, why the heck did I have to add ".gz" to the end of the Bootstrap file when writing the command? That is the file extension which, by default, is hidden on Windows. Now is the time to enable, as it will be important later. 
 
 #### 0.2.6 - Enable File Name Extensions in File Explorer if you Haven't Already
 
-This will be a little hard to explain without picture, so if you need some, [check this link out](https://fileinfo.com/help/windows_11_show_file_extensions). In  File Explore, at the top, click "View", highlight "Show", then click "File name  extensions".
+This will be a little hard to explain without pictures, so if you need some, [check this link out](https://fileinfo.com/help/windows_11_show_file_extensions). In  File Explorer, at the top, click "View", highlight "Show", then click "File name  extensions".
 
-Now, if you look back at that wf-bootstrap-x86_64.tar file that in the /opt/wonderful/ folder, it now has the extension ".gz" tagged on the end.  
+Now, if you look back at that wf-bootstrap-x86_64.tar file in the /opt/wonderful/ folder, it now has the extension ".gz" tagged on the end.  
 
 #### 0.2.7 - Synchronize and update the Toolchain's Package Manager
 
@@ -256,7 +264,7 @@ Ok, back on track, run the command:
 
 `/opt/wonderful/bin/wf-pacman -Syu wf-tools`
 
-When asked to proceed, type Y and press enter. "Y" is, of course, for yes, and though this isn't case sensitive as Y or y works, get used to the idea that EVERYTHING is case sensitive. It will save you a lot of trouble that way.
+When asked to proceed, type Y and press Enter. "Y" is, of course, for yes, and though this isn't case sensitive as Y or y works, get used to the idea that EVERYTHING is case sensitive. It will save you a lot of trouble that way.
 
 >If it fails to grab some tools, run the command again.
 
@@ -270,11 +278,11 @@ Yes, it does nothing, which is good. I will say that every time since, well, con
 
 Sweet, now you are done!!
 
-You do not need to go through the post-installation guide as that is for development on Bandai Wonderswan console. 
+You do not need to go through the post-installation guide, as that is for development on the Bandai Wonderswan console. 
 
 #### 0.2.9 - Add the BlocksDS repository to wf-pacman
 
-Step two for installing BlocksDS is easy as it is just running a series of copy and paste commands. 
+Step two for installing BlocksDS is as easy as it is just running a series of copy and paste commands. 
  
 Run:
  
@@ -293,15 +301,15 @@ Run:
 
 `wf-pacman -S blocksds-toolchain`
 
-Proceed with install
+Proceed with the installation
 
-> If this command fails, then welcome to the hell that me and my poor laptop found ourselves in for a couple of day. After testing, it would appear to be an issue with running the `pacman` and `apt` commands on my, otherwise flawless, WiFi. 
+> If this command fails, then welcome to the hell that my poor laptop found itself in for a couple of days. After testing, it would appear to be an issue with running the `pacman` and `apt` commands on my otherwise flawless, WiFi. 
 >
-> Running an Ethernet cable and an adapter on my laptop downloaded the tools and all subsiquent steps without errors. So if you have the option to go hard line, do it. 
+> Running an Ethernet cable and an adapter on my laptop downloaded the tools and all subsequent steps without errors. So if you have the option to go hard line, do it. 
 >
-> But fret not, where I suffered you will succeed. 
+> But fret not, where I suffered, you will succeed. 
 >
-> All we need to do is "uncomment" out 1 character from a line of code, and it will tell the command to retry until it succeeds. I speak more about uncommenting in the section [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt], but all you need to know right now is going into a text file and removing a "#".
+> All we need to do is "uncomment" out 1 character from a line of code, and it will tell the command to retry until it succeeds. I speak more about uncommenting in the section [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt](#543---uncomment-the-dspico_enable_wrfuxxed-option-in-cmakeliststxt), but all you need to know right now is going into a text file and removing a "#".
 >
 > In file explorer, go to /opt/eonderful/etc/. There should be a file called `packman.conf`. Open that file with a notepad app. If you don't get the option to open the file when you click on it, just open Notepad first, and drag the file into it. 
 >
@@ -329,7 +337,7 @@ This will also do nothing, and that is ok.
 
 ### 0.3 - Install .NET 9.0
 
-This one is nice and easy, and isn't the bane of my existence for hours! (This part really threw me through a loop.)
+This one is nice and easy, and isn't the bane of my existence for hours! (This part really threw me for a loop.)
 
 
 #### 0.3.1 - Add Backports Repository
@@ -352,9 +360,9 @@ sudo apt-get install -y dotnet-sdk-9.0
 ```
 This takes a little bit of time. 
 
-> If you get the printout `Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?`, rerun the command on [0.3.1 - Add Backports Repository] and then run this command again. 
+> If you get the printout `Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?`, rerun the command on [0.3.1 - Add Backports Repository](#031---add-backports-repository) and then run this command again. 
 >
-> If you still get this printout, just keep retrying. It will eventually work. Hi to the folks who are struggling along with me since the workaround on [0.2.10 - Install the ARM Toolchain and BlocksDS]. There is a light at the end of this tunnel, I promise.
+> If you still get this printout, just keep retrying. It will eventually work. Hi to the folks who are struggling along with me since the workaround on [0.2.10 - Install the ARM Toolchain and BlocksDS](#0210---install-the-arm-toolchain-and-blocksds). There is a light at the end of this tunnel, I promise.
 
 Once that is finished, you are all done with that step.
 
@@ -362,13 +370,15 @@ Once that is finished, you are all done with that step.
 
 Run:
 
-`sudo apt install cmake gcc-arm-none-eabi build-essential git`
+```bash
+sudo apt install cmake gcc-arm-none-eabi build-essential git
+```
 
->If this command fails to retrieve some archives, chances are you are the in the same group from [0.3.2 - Install SDK] and [0.2.10 - Install the ARM Toolchain and BlocksDS] who also had trouble. Misery loves company, and my Laptop would like a friend. 
+>If this command fails to retrieve some archives, chances are you are in the same group from [0.2.11 - Setup environment variables](#0211---setup-environment-variables) and [0.3.2 - Install SDK](#032---install-sdk) who also had trouble. Misery loves company, and my Laptop would like a friend. 
 >
 > For some reason, the arm-gnu-toolchain decided to cross its little arms and say "NO!" when asked to be downloaded. In keeping with my metaphor, we need to go to their parents to get it.  
 >
-> First, we need all of the parts of the command that (usually) don't throw a fit. This is, cmake, build-essential, and git.
+> First, we need all of the parts of the command that (usually) don't throw a fit. This is cmake, build-essential, and git.
 >
 > ```bash
 > sudo apt install cmake
@@ -381,7 +391,7 @@ Run:
 >
 > Then, the problem child who, no matter how much you retry, will not download.
 >
-> Set a current directory to /opt/. I will explain current directory later. Problem first, word dump later. 
+> Set the current directory to /opt/. I will explain the current directory later. Problem first, word dump later. 
 >
 > `cd /opt`
 >
@@ -422,11 +432,15 @@ Nothing will happen, which is a good thing.
 
 ## 1. Getting and Assembling your DSpico
 
-I'll make the bold assumption that you already have an unflashed DSpico in your hands or you need to reflash it for whatever reason. I mean, why else would you be doing this?
+---
 
-However, if you so desire, Refer to the [DSpico hardware repository](https://github.com/LNH-team/dspico-hardware) for all information about ordering and assembling a DSpico.
+I'll make the bold assumption that you already have an unflashed DSpico in your hands, or you need to reflash it for whatever reason. I mean, why else would you be doing this?
 
-That process is outside of the scope of this guide, so, good luck. 
+However, if you so desire, refer to the [DSpico hardware repository](https://github.com/LNH-team/dspico-hardware) for all information about ordering and assembling a DSpico.
+
+That process is outside of the scope of this guide, so good luck. 
+
+<!-- If any reputable third-party sellers exist, it may be nice to shout them out. Here and at the beginning of the document. -->
 
 ---
 
@@ -434,17 +448,19 @@ That process is outside of the scope of this guide, so, good luck.
 
 ### 2.1 - Setting up the Current Directory where the Action will Happen
 
-Just so that we are all on the same page here, let's set the current directory to your user profile. 
+Just so we are all on the same page here, let's set the current directory to your user profile. 
 
 Run:
 
-`cd`
+```bash
+cd
+```
 
-This will set the directory to the /home/Username/ file. Any subsequent commands will be executed in this file. The current directory command is extremely important since, when you run commands, those commands will be looking for resources within the folder you are in. If you are in the wrong folder, the commands will either fail, or not do what you want. 
+This will set the directory to `/home/Username/` file. Any subsequent commands will be executed in this file. The current directory command is extremely important since, when you run commands, those commands will be looking for resources within the folder you are in. If you are in the wrong folder, the commands will either fail or not do what you want. 
 
-> For me, I just had the /home/Username/ folder be my project folder, but if you wanted to make a "project" file within you username file to keep everything orderly, first, run the command to make the file:
+> For me, I just had the `/home/Username/` folder be my project folder, but if you wanted to make a "project" file within your username file to keep everything orderly, first, run the command to make the file:
 >
-> `sudo mkdir ~/project`
+> sudo mkdir ~/project
 >
 > You can, of course, name it whatever you like. Just remember it.
 >
@@ -969,6 +985,7 @@ If you prepped the Firmware to run in DSi mode, and you are using an unmodified 
 If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a normal game (or flashcart).
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+
 
 
 
