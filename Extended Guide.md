@@ -73,7 +73,7 @@ Anyway, on to the guide!
 	- [2.1 - Setting up the Current Directory where the Action will Happen](#21---setting-up-the-current-directory-where-the-action-will-happen)
 	- [2.2 - Clone the DSpico DLDI Repository](#22---clone-the-dspico-dldi-repository)
 	- [2.3 - Run Make to create the DLDI](#23---run-make-to-create-the-dldi)
-- [3. Compiling the DSpico Bootloader](#3---compiling-the-dspico-bootloader)
+- [3. Compiling the DSpico Bootloader](#3-compiling-the-dspico-bootloader)
 	- [3.1 - Clone the DSpico Bootloader repository](#31---clone-the-dspico-bootloader-repository)
 	- [3.2 - Initialize the Submodules](#32---initialize-the-submodules)
 	- [3.3 - Make the Bootloader](#33---make-the-bootloader)
@@ -82,11 +82,11 @@ Anyway, on to the guide!
 	- [3.6 - Compile DSRomEncryptor](#36---compile-dsromencryptor)
 	- [3.7 - NTR and/or TWL Blowfish Tables](#37---ntr-andor-twl-blowfish-tables)
 	- [3.8 - Finalizing the BOOTLOADER](#38---finalizing-the-bootloader)
-- [4. Optional: Compiling Wrfuxxed](#4---optional-compiling-wrfuxxed)
+- [4. Optional: Compiling Wrfuxxed](#4-optional-compiling-wrfuxxed)
 	- [4.1 - Clone the Wrfuxxed repository](#41---clone-the-wrfuxxed-repository)
 	- [4.2 - Run Make in the WRfuxxed file](#42---run-make-in-the-wrfuxxed-file)
 	- [4.3 - DLDI Patch the Exploit](#43---dldi-patch-the-exploit)
-- [5. Compiling the DSpico Firmware](#5---compiling-the-dspico-firmware)
+- [5. Compiling the DSpico Firmware](#5-compiling-the-dspico-firmware)
 	- [5.1 - Clone the DSpico Firmware Repository](#51---clone-the-dspico-firmware-repository)
 	- [5.2 - Initialize the Submodules for DSpico Firmware](#52---initialize-the-submodules-for-dspico-firmware)
 	- [5.3 - Move the default.nds File](#53---move-the-defaultnds-file)
@@ -95,22 +95,22 @@ Anyway, on to the guide!
 		- [5.4.2 - Move the uartBufv060.bin to the data folder](#542---move-the-uartbufv060bin-to-the-data-folder)
 		- [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt](#543---uncomment-the-dspico_enable_wrfuxxed-option-in-cmakeliststxt)
 	- [5.5 - Compile the Firmware](#55---compile-the-firmware)
-- [6. Flashing the DSpico](#6---flashing-the-dspico)
+- [6. Flashing the DSpico](#6-flashing-the-dspico)
 	- [6.1 - Boot the DSpico in BOOTSEL mode](#61---boot-the-dspico-in-bootsel-mode)
 	- [6.2 - Move the firmware file over to the DSpico](#62---move-the-firmware-file-over-to-the-dspico)
 	- [6.3 - Disconnect the DSpico from the PC](#63---disconnect-the-dspico-from-the-pc)
-- [7. Compiling Pico Loader](#7---compiling-pico-loader)
+- [7. Compiling Pico Loader](#7-compiling-pico-loader)
 	- [7.1 - Clone the Pico Loader Repository](#71---clone-the-pico-loader-repository)
 	- [7.2 - Initialize the Submodules](#72---initialize-the-submodules)
 	- [7.3 - Run make](#73---run-make)
-- [8. Compiling Pico launcher](#8---compiling-pico-launcher)
+- [8. Compiling Pico launcher](#8-compiling-pico-launcher)
 	- [8.1 - Clone the Pico Launcher Repository](#81---clone-the-pico-launcher-repository)
 	- [8.2 - Initialize the Submodules](#82---initialize-the-submodules)
 	- [8.3 - Run Make](#83---run-make)
-- [9. Prepare the Micro SD Card](#9---prepare-the-micro-sd-card)
+- [9. Prepare the Micro SD Card](#9-prepare-the-micro-sd-card)
 	- [9.1 - Formatting your SD Card](#91---formatting-your-sd-card)
 	- [9.2 - Migrating Files to the SD Card](#92---migrating-files-to-the-sd-card)
-- [10. Test your DSpico](#10---test-your-dspico)
+- [10. Test your DSpico](#10-test-your-dspico)
 	- [10.1 - Slot your SD Card into the DSPico](#101---slot-your-sd-card-into-the-dspico)
 	- [10.2 - Profit](#102---profit)
 
@@ -969,6 +969,7 @@ If you prepped the Firmware to run in DSi mode, and you are using an unmodified 
 If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a normal game (or flashcart).
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+
 
 
 
