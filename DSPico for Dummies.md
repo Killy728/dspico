@@ -7,7 +7,7 @@ This guide assumes <u>nothing!</u>
 - No Knowledge of WSL or Linux
 - No flaky WiFi on your personal laptop that has been by your side since you 2nd year of University and... right.
 
-What this guide does assume is you have an unflashed DSPico that you don't know how to set up or want to reflash for any reason. If you want to get one built, head down over to the [#DSpico hardware repository](https://github.com/LNH-team/dspico-hardware). 
+What this guide does assume is you have an unflashed DSPico that you don't know how to set up or want to reflash for any reason. If you want to get one built, head down over to the [DSpico hardware repository](https://github.com/LNH-team/dspico-hardware). 
 
 <!-- REVIEW: I am not aware of any feasible method of checking whether or not the DSpico has been flashed aside from, maybe, trying with an SD card loaded with Pico Launcher. -->
 
@@ -46,7 +46,7 @@ This project does not provide instructions, tools, or guidance for extracting bi
 Anyway, on to the guide!
 
 ## Table of Contents
-- [0. Prerequisites]
+- [#0. Prerequisites]
 	- [0.1 - Ensure you have a Linux or WSL (Windows Subsystem for Linux) Environment set up]
 		- [0.1.1 - Download WSL]
 		- [0.1.2 - Setting Up WSL]
@@ -970,3 +970,4 @@ If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a no
 
 
 Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+
