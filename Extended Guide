@@ -339,7 +339,7 @@ Proceed with the installation
 >
 > All we need to do is "uncomment" out 1 character from a line of code, and it will tell the command to retry until it succeeds. I speak more about uncommenting in the section [5.4.3 - Uncomment the DSPICO_ENABLE_WRFUXXED option in CMakeLists.txt](#543---uncomment-the-dspico_enable_wrfuxxed-option-in-cmakeliststxt), but all you need to know right now is going into a text file and removing a "#".
 >
-> In file explorer, go to `/opt/eonderful/etc/`. There should be a file called `packman.conf`. Open that file with a notepad app. If you don't get the option to open the file when you click on it, just open Notepad first, and drag the file into it. 
+> In file explorer, go to `/opt/wonderful/etc/`. There should be a file called `packman.conf`. Open that file with a notepad app. If you don't get the option to open the file when you click on it, just open Notepad first, and drag the file into it. 
 >
 > On line 20, there is a line of code that says `#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u`. Remove the `#` at the very beginning, save the file, and close out. 
 >
@@ -974,7 +974,7 @@ Your DSpico is flashed, but in all respects, it is still a paperweight. What it 
 ##
 ### 7.1 - Clone the Pico Loader repository
 
-If there are any new folks here who have a pre-flashed DSpico and want to compile their own Pio Loader and Pico Launcher, well, hi, how are you?
+If there are any new folks here who have a pre-flashed DSpico and want to compile their own Pico Loader and Pico Launcher, well, hi, how are you?
 
 You will need to jump back to and complete [0. Prerequisites](#0-prerequisites) to get WSL and all of the various tool chains and components installed in order to compile Pico Loader and Pico Launcher.
 
@@ -1156,10 +1156,10 @@ Take a deep breath, and power the console on.
 
 If you did everything correctly, 1 of 2 things will happen. 
 
-If you prepped the Firmware to run in DSi mode, and you are using an unmodified DSi, it'll hijack the boot process and plop you right into Pico Laucher. 
+If you prepped the Firmware to run in DSi mode, and you are using an unmodified DSi, it'll hijack the boot process and plop you right into Pico Launcher. 
 
 If you're on a normal DS/DS Lite, The DSpico should appear on the menu like a normal game (or flashcart).
 
-Congratulations. You now have the World's First Open Source Flashcart in the palms of your loaded and ready for whatever your heart desires. 
+Congratulations. You now have the World's First Open Source Flashcart in the palms of your hands, loaded and ready for whatever your heart desires. 
 
 ##
